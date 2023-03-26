@@ -17,12 +17,14 @@ const Navbar = () => {
         <Link
           to="/"
           className={`text-sm md:text-lg rounded-md px-3 md:px-4 py-1 md:py-2 w-16 md:w-20 text-center ${
-            location.pathname === "/" ? "font-bold bg-white" : "bg-gray-200"
+            location.pathname === "/e-commerce"
+              ? "font-bold bg-white"
+              : "bg-gray-200"
           }`}
         >
           Home
         </Link>
-        <When isTrue={location.pathname === "/"}>
+        <When isTrue={location.pathname === "/e-commerce"}>
           <div className="w-2/4">
             <Input
               placeholder="Search products"
@@ -35,7 +37,9 @@ const Navbar = () => {
         <Link
           to="/cart"
           className={`text-sm md:text-lg rounded-md px-3 md:px-4 py-1 md:py-2  w-16 md:w-20 text-center ${
-            location.pathname === "/cart" ? "font-bold bg-white" : "bg-gray-200"
+            location.pathname === "/e-commerce/cart"
+              ? "font-bold bg-white"
+              : "bg-gray-200"
           }`}
         >
           Cart
