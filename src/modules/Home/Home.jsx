@@ -6,7 +6,9 @@ import { fetchProducts } from "./home.actions";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { products, loading } = useSelector((state) => state.homeReducer);
+  const { filteredProducts, loading } = useSelector(
+    (state) => state.homeReducer
+  );
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
@@ -21,7 +23,7 @@ const Home = () => {
       </When>
       <When isTrue={!loading}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-center">
-          {products?.map((product) => (
+          {filteredProducts?.map((product) => (
             <div key={product.id} className="flex justify-center mb-4">
               <ProductCard product={product} />
             </div>

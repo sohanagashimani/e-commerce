@@ -1,4 +1,6 @@
 import React from "react";
+import { toast } from "react-toastify";
+import { toastConfig } from "../../../constants/toast.config";
 
 const OrderSummary = ({ total }) => {
   return (
@@ -22,7 +24,15 @@ const OrderSummary = ({ total }) => {
           <span className="font-bold">Total:</span>
           <span>${(total * 1.1).toFixed(2)}</span>
         </div>
-        <button className="bg-blue-500 text-white py-2 px-4 rounded-md mt-4">
+        <button
+          className="bg-blue-500 text-white py-2 px-4 rounded-md mt-4"
+          onClick={() => {
+            toast.info(
+              "Checkout functionality is not implemented yet.",
+              toastConfig
+            );
+          }}
+        >
           Checkout
         </button>
       </div>

@@ -1,21 +1,45 @@
+import { Input } from "antd";
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import { When } from "../../@components";
+import { searchProduct } from "../Home/home.actions";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const handleOnChange = (e) => {
+    dispatch(searchProduct(e.target.value));
+  };
   return (
     <nav className="bg-blue-500 p-4">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
-        <Link to="/" className="text-white text-xl font-bold">
+        <Link
+          to="/"
+          className={`text-sm md:text-lg rounded-md px-3 md:px-4 py-1 md:py-2 w-16 md:w-20 text-center ${
+            location.pathname === "/" ? "font-bold bg-white" : "bg-gray-200"
+          }`}
+        >
           Home
         </Link>
-        <div className="flex items-center">
-          <Link
-            to="/cart"
-            className="text-white text-lg mr-6 hover:text-gray-200"
-          >
-            Cart
-          </Link>
-        </div>
+        <When isTrue={location.pathname === "/"}>
+          <div className="w-2/4">
+            <Input
+              placeholder="Search products"
+              allowClear
+              onChange={handleOnChange}
+              className=" md:py-2"
+            />
+          </div>
+        </When>
+        <Link
+          to="/cart"
+          className={`text-sm md:text-lg rounded-md px-3 md:px-4 py-1 md:py-2  w-16 md:w-20 text-center ${
+            location.pathname === "/cart" ? "font-bold bg-white" : "bg-gray-200"
+          }`}
+        >
+          Cart
+        </Link>
       </div>
     </nav>
   );

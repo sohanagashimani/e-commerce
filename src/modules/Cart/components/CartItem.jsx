@@ -1,6 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { toastConfig } from "../../../constants/toast.config";
 import { changeQuantity, removeFromCart } from "../cart.actions";
+import Button from "./Button";
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -11,10 +14,10 @@ const CartItem = ({ item }) => {
     dispatch(removeFromCart(id));
   };
   return (
-    <div className="flex flex-col md:flex-row border rounded-md p-4 mb-4">
-      <div className="flex-none mr-4">
+    <div className="flex bg-white flex-col md:flex-row border rounded-md p-4 mb-4 mr-3">
+      <div className="mr-4">
         <img
-          className="object-contain w-48 h-48 md:w-32 md:h-32 rounded-md"
+          className="object-contain w-32 h-32 rounded-md"
           src={item.image}
           alt={item.title}
         />
@@ -23,28 +26,27 @@ const CartItem = ({ item }) => {
         <h2 className="font-medium text-lg mb-2">{item.title}</h2>
         <p className="text-gray-500 text-base mb-2">{item.category}</p>
         <div className="flex items-center mb-2">
-          <button
-            className="border rounded-md text-lg font-medium px-2 py-1 mr-2 hover:bg-gray-200"
+          <Button
             onClick={() => {
               if (item.quantity > 1)
                 handleChangeQuantity({ item, quantity: item.quantity - 1 });
               else handleRemoveItem(item.id);
             }}
-          >
-            -
-          </button>
+            buttonText="-"
+          />
           <p className="text-lg font-medium mr-2">{item.quantity}</p>
-          <button
-            className="border rounded-md text-lg font-medium px-2 py-1 mr-2 hover:bg-gray-200"
+          <Button
             onClick={() =>
               handleChangeQuantity({ item, quantity: item.quantity + 1 })
             }
-          >
-            +
-          </button>
+            buttonText="+"
+          />
           <button
             className="text-red-500 font-medium hover:underline ml-auto"
-            onClick={() => handleRemoveItem(item.id)}
+            onClick={() => {
+              handleRemoveItem(item.id);
+              toast.success("Item removed", toastConfig);
+            }}
           >
             Remove
           </button>

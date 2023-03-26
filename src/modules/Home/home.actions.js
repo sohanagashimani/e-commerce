@@ -2,6 +2,7 @@ import {
   FETCH_PRODUCTS_FAILURE,
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
+  SEARCH_PRODUCT,
 } from "./home.action.types";
 
 export const fetchProducts = () => {
@@ -20,6 +21,21 @@ export const fetchProducts = () => {
       dispatch({
         type: FETCH_PRODUCTS_FAILURE,
         error: error,
+      });
+    }
+  };
+};
+export const searchProduct = (searchText) => {
+  return (dispatch) => {
+    if (searchText.length < 3) {
+      dispatch({
+        type: SEARCH_PRODUCT,
+        searchText: "",
+      });
+    } else {
+      dispatch({
+        type: SEARCH_PRODUCT,
+        searchText,
       });
     }
   };
