@@ -4,15 +4,11 @@ import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import store from "./store";
-import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const baseUrl = process.env.REACT_APP_BASE_URL;
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <App />
     </Provider>
   </React.StrictMode>
 );
