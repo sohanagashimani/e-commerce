@@ -10,7 +10,7 @@ const baseUrl = process.env.REACT_APP_BASE_URL;
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename={baseUrl}>
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
