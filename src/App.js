@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <HashRouter>
+    <HashRouter basename="/e-commerce">
       <div>
         <Navbar />
         <ToastContainer />
