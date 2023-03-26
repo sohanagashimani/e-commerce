@@ -47,10 +47,10 @@ export const cartReducer = (state = initialCartState, action) => {
       return {
         ...state,
         items: state.items.map((item) =>
-          item.id === action.payload.id
+          item.id === action.payload.item.id
             ? {
                 ...item,
-                quantity: action.payload.quantity,
+                quantity: action.payload.item.quantity,
               }
             : item
         ),

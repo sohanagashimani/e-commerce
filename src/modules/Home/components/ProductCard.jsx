@@ -6,8 +6,8 @@ import { fetchProduct } from "../../Product/product.actions";
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleViewClick = async () => {
-    await dispatch(fetchProduct(product.id));
+  const handleViewClick = () => {
+    dispatch(fetchProduct(product.id));
     navigate(`/product/${product.id}`);
   };
   return (
