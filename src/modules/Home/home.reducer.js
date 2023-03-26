@@ -7,7 +7,7 @@ import {
 const initialProductsState = {
   loading: false,
   error: null,
-  data: [],
+  products: [],
 };
 export const homeReducer = (state = initialProductsState, action) => {
   switch (action.type) {
@@ -21,14 +21,14 @@ export const homeReducer = (state = initialProductsState, action) => {
         ...state,
         loading: false,
         error: null,
-        data: action.payload,
+        products: action.products,
       };
     case FETCH_PRODUCTS_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload,
-        data: [],
+        error: action.error,
+        products: [],
       };
     default:
       return state;

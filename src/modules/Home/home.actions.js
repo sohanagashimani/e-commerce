@@ -11,9 +11,10 @@ export const fetchProducts = () => {
         type: FETCH_PRODUCTS_REQUEST,
       });
       const response = await fetch("https://fakestoreapi.com/products");
+      const products = await response.json();
       dispatch({
         type: FETCH_PRODUCTS_SUCCESS,
-        data: response.json(),
+        products,
       });
     } catch (error) {
       dispatch({
