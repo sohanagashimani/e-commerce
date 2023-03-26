@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { Cart, Home, ProductDetails } from "./modules";
 import Navbar from "./modules/Navbar/Navbar";
